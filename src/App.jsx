@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Todo from "./components/Todo";
 import TodoForm from "./components/TodoForm";
 import Search from "./components/Search";
-import Filter from "./components/filter";
+import Filter from "./components/Filter";
 import "./App.css";
 
 function App() {
@@ -21,12 +21,10 @@ function App() {
   const [filter, setFilter] = useState("All");
   const [sort, setSort] = useState("Asc");
 
-  // Salvar no localStorage sempre que mudar
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  // Adicionar nova tarefa
   const addTodo = (text, category) => {
     const newTodo = { id: Date.now(), text, category, isCompleted: false };
     setTodos((prev) => [...prev, newTodo]);
@@ -37,7 +35,6 @@ function App() {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
 
-  // Completar/desmarcar tarefa
   const completeTodo = (id) => {
     setTodos((prev) =>
       prev.map((todo) =>
@@ -46,14 +43,12 @@ function App() {
     );
   };
 
-  // Editar tarefa
   const editTodo = (id, newText) => {
     setTodos((prev) =>
       prev.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
     );
   };
 
-  // Filtrar e ordenar tarefas
   const filteredTodos = todos
     .filter((todo) => {
       if (filter === "All") return true;

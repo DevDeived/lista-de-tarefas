@@ -1,26 +1,31 @@
+/* Reset e estilo base */
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   padding: 30px;
   color: #333;
   background-image: url('./img/fundo.jpg');
   background-position: center;
   background-size: cover;
+  margin: 0;
 }
 
-.app{
+.app {
   max-width: 600px;
-  margin: 0 auto 300px;
+  width: 90%;
+  margin: 0 auto 2rem;
   background-color: #efefef;
   padding: 20px 30px;
   border-radius: 10px;
+  box-sizing: border-box;
 }
 
 h1 {
   text-align: center;
+  font-size: 2rem;
 }
 
-h2{
+h2 {
   margin-bottom: 10px;
 }
 
@@ -28,32 +33,37 @@ p {
   margin: 10px 0;
 }
 
-input {
+input, select {
   box-sizing: border-box;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  width: 100%;
 }
 
 button {
   background-color: #0e24e7;
   color: #fff;
-  padding: 5px 10px;
+  padding: 7px 14px;
   border: none;
   border-radius: 5px;
   margin-right: 10px;
   cursor: pointer;
-  opacity: .7;
-  transition: .3s;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 1;
 }
 
 .complete {
   background-color: #5cb85c;
 }
 
-.remove{
+.remove {
   background-color: #d9534f;
-}
-
-button:hover{
-  opacity: 1;
 }
 
 .todo-list {
@@ -64,26 +74,29 @@ button:hover{
 
 .todo {
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
+.todo .content {
+  flex: 1 1 60%;
+  min-width: 150px;
+}
+
+.todo div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
 
 .todo-form {
   padding-bottom: 1.5rem;
-}
-
-input, select {
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #DDD;
-  border-radius: 5px;
-  width: 100%;
 }
 
 .filter, .search {
@@ -95,9 +108,56 @@ input, select {
 .filter-options {
   display: flex;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.filter-options div{
-  flex: 1 1 0;
+.filter-options div {
+  flex: 1 1 100px;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+  .app {
+    padding: 15px 20px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .filter-options {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .todo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .todo div {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  button {
+    width: 48%;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  .app {
+    padding: 10px 15px;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
 }
