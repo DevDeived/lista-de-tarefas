@@ -1,6 +1,5 @@
 {
   "build": {
-    "env": {},
     "command": "npm run build",
     "outputDirectory": "dist"
   }
